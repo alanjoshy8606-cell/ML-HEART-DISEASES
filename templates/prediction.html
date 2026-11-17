@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#16070D">
+    <title>Heart Prediction — HEART / 01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+</head>
+<body>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+        <a class="brand" href="/">
+            <span class="brand-mark">H<span>/</span>01</span>
+            <span class="brand-copy"><strong>HEART</strong><small>INTELLIGENCE PLATFORM</small></span>
+        </a>
+        <div class="side-label">WORKSPACE</div>
+        <nav class="side-nav">
+            <a class="side-link" href="/dashboard"><span class="side-icon">◫</span>Overview</a>
+            <a class="side-link active" href="/prediction"><span class="side-icon">♡</span>Heart prediction</a>
+            <a class="side-link" href="/history"><span class="side-icon">↺</span>Prediction history</a>
+            <a class="side-link" href="/dashboard"><span class="side-icon">▤</span>Dataset explorer</a>
+        </nav>
+        <div class="side-label side-label-spaced">INTELLIGENCE</div>
+        <nav class="side-nav">
+            <a class="side-link" href="/dashboard#model-performance"><span class="side-icon">⌘</span>Model performance</a>
+            <a class="side-link" href="/dashboard#analytics"><span class="side-icon">⌁</span>Analytics</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="system-card"><span class="online-dot"></span><div><strong>System operational</strong><small>Random Forest module</small></div></div>
+            <a class="back-link" href="/">← Back to home</a>
+            <div class="sidebar-version">HEART / 01 <span>V 1.0</span></div>
+        </div>
+    </aside>
+
+    <main class="main-area">
+        <header class="topbar">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">☰</button>
+            <div class="breadcrumb"><a href="/dashboard">Workspace</a><b>/</b> Heart prediction</div>
+            <div class="topbar-right"><div class="live-status"><span class="online-dot"></span> SYSTEM ONLINE</div><div class="profile"><div class="avatar">H</div><div><strong>HEART / 01</strong><small>Research workspace</small></div></div></div>
+        </header>
+
+        <section class="page-content">
+            <div class="page-heading">
+                <div>
+                    <div class="eyebrow"><span></span> CARDIAC INTELLIGENCE / PREDICTION</div>
+                    <h1>Explore a prediction<span>.</span></h1>
+                    <p>Enter the health and lifestyle information below to run the trained model.</p>
+                </div>
+                <div class="model-chip"><span class="online-dot"></span><div><small>ACTIVE ALGORITHM</small><strong>Random Forest</strong></div></div>
+            </div>
+
+            {% if page_error %}
+            <div class="server-alert">{{ page_error }}. Check that data.csv is present in the project root.</div>
+            {% endif %}
+
+            <div class="prediction-layout">
+                <section class="form-panel">
+                    <div class="form-panel-heading">
+                        <div><span class="section-kicker">PATIENT INPUT / 001</span><h2>Health information</h2><p>Complete each step. Fields are based on the model's 12 training features.</p></div>
+                        <span class="required-note">* REQUIRED</span>
+                    </div>
+
+                    <div class="stepper" aria-label="Form progress">
+                        <div class="stepper-item active" data-step-indicator="0"><span>01</span><small>PROFILE</small></div>
+                        <i></i>
+                        <div class="stepper-item" data-step-indicator="1"><span>02</span><small>HEALTH</small></div>
+                        <i></i>
+                        <div class="stepper-item" data-step-indicator="2"><span>03</span><small>LIFESTYLE</small></div>
+                    </div>
+
+                    <form id="predictionForm" novalidate>
+                        <section class="form-step active" data-step="0">
+                            <div class="step-heading"><span>01 / PERSONAL PROFILE</span><h3>Let's start with the basics.</h3><p>Enter the person's age and gender.</p></div>
+                            <div class="field-grid two-col">
+                                <label class="field"><span>Age <b>*</b></span><div class="input-wrap"><input type="number" name="age" min="1" max="120" step="1" placeholder="e.g. 45" required><small>YEARS</small></div><em>Enter an age between 1 and 120.</em></label>
+                                <label class="field"><span>Gender <b>*</b></span><select name="gender" required><option value="">Select gender</option>{% for value in categories.gender %}<option value="{{ value }}">{{ value }}</option>{% endfor %}</select><em>Select a value represented in the training dataset.</em></label>
+                            </div>
+                        </section>
+
+                        <section class="form-step" data-step="1">
+                            <div class="step-heading"><span>02 / HEALTH PARAMETERS</span><h3>Health measurements.</h3><p>Enter the available measurements using the units shown.</p></div>
+                            <div class="field-grid two-col">
+                                <label class="field"><span>Glucose level <b>*</b></span><div class="input-wrap"><input type="number" name="glucose_mg_dl" min="0.01" step="any" placeholder="e.g. 105" required><small>MG/DL</small></div></label>
+                                <label class="field"><span>Cholesterol <b>*</b></span><div class="input-wrap"><input type="number" name="cholesterol_mg_dl" min="0.01" step="any" placeholder="e.g. 190" required><small>MG/DL</small></div></label>
+                                <label class="field"><span>Systolic blood pressure <b>*</b></span><div class="input-wrap"><input type="number" name="systolic_bp" min="0.01" step="any" placeholder="e.g. 120" required><small>MMHG</small></div></label>
+                                <label class="field"><span>Diastolic blood pressure <b>*</b></span><div class="input-wrap"><input type="number" name="diastolic_bp" min="0.01" step="any" placeholder="e.g. 80" required><small>MMHG</small></div></label>
+                                <label class="field"><span>Body mass index (BMI) <b>*</b></span><div class="input-wrap"><input type="number" name="bmi" min="0.01" step="any" placeholder="e.g. 24.5" required><small>KG/M²</small></div></label>
+                                <label class="field"><span>Heart rate <b>*</b></span><div class="input-wrap"><input type="number" name="heart_rate" min="0.01" step="any" placeholder="e.g. 72" required><small>BPM</small></div></label>
+                            </div>
+                        </section>
+
+                        <section class="form-step" data-step="2">
+                            <div class="step-heading"><span>03 / LIFESTYLE &amp; HISTORY</span><h3>A little more context.</h3><p>Select the options that best match the information being entered.</p></div>
+                            <div class="field-grid two-col">
+                                <label class="field"><span>Smoking <b>*</b></span><select name="smoking" required><option value="">Select option</option>{% for value in categories.smoking %}<option value="{{ value }}">{{ value }}</option>{% endfor %}</select></label>
+                                <label class="field"><span>Alcohol consumption <b>*</b></span><select name="alcohol_consumption" required><option value="">Select option</option>{% for value in categories.alcohol_consumption %}<option value="{{ value }}">{{ value }}</option>{% endfor %}</select></label>
+                                <label class="field"><span>Physical activity <b>*</b></span><select name="physical_activity" required><option value="">Select option</option>{% for value in categories.physical_activity %}<option value="{{ value }}">{{ value }}</option>{% endfor %}</select></label>
+                                <label class="field"><span>Family history <b>*</b></span><select name="family_history" required><option value="">Select option</option>{% for value in categories.family_history %}<option value="{{ value }}">{{ value }}</option>{% endfor %}</select></label>
+                            </div>
+                            <div class="consent-note"><span>ⓘ</span><p>Use accurate, appropriately obtained information. Avoid entering personally identifying details such as a person's name, phone number or address.</p></div>
+                        </section>
+
+                        <div class="form-error" id="formError" role="alert"></div>
+                        <div class="form-controls">
+                            <button type="button" class="button-quiet" id="previousButton" disabled>← Previous</button>
+                            <div class="controls-right"><span id="stepCount">STEP 01 OF 03</span><button type="button" class="button-primary" id="nextButton">Continue <span>→</span></button><button type="submit" class="button-primary" id="submitButton" hidden>Run prediction <span>↗</span></button></div>
+                        </div>
+                    </form>
+                </section>
+
+                <aside class="side-information">
+                    <div class="info-card model-info">
+                        <span class="section-kicker">MODEL / 001</span>
+                        <div class="model-emblem">RF</div>
+                        <h3>Random Forest</h3>
+                        <p>The selected classification pipeline trained using the project's full 1,000-record dataset.</p>
+                        <div class="info-divider"></div>
+                        <div class="info-row"><span>Training records</span><strong>1,000</strong></div>
+                        <div class="info-row"><span>Input features</span><strong>12</strong></div>
+                        <div class="info-row"><span>Ensemble trees</span><strong>300</strong></div>
+                        <a href="/dashboard#model-performance" class="text-link">View model evaluation ↗</a>
+                    </div>
+                    <div class="info-card process-info">
+                        <span class="section-kicker">HOW IT WORKS</span>
+                        <div class="process-item"><span>01</span><div><strong>Input validation</strong><small>Check the supplied feature values.</small></div></div>
+                        <div class="process-item"><span>02</span><div><strong>Model processing</strong><small>Run the saved preprocessing and classifier pipeline.</small></div></div>
+                        <div class="process-item"><span>03</span><div><strong>Prediction output</strong><small>Display and log the model's predicted class.</small></div></div>
+                    </div>
+                    <div class="disclaimer-card"><strong>Research prototype</strong><p>This tool is for educational and experimental use only. It does not diagnose, rule out, or treat heart disease. Consult a qualified healthcare professional for medical concerns.</p></div>
+                </aside>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="result-overlay" id="resultOverlay" aria-hidden="true">
+    <section class="result-modal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+        <button class="modal-close" id="closeResult" aria-label="Close result">×</button>
+        <span class="section-kicker">HEART / 01 — MODEL OUTPUT</span>
+        <div class="result-symbol" id="resultSymbol">✓</div>
+        <div class="result-overline">PREDICTION GENERATED</div>
+        <h2 id="resultTitle">Prediction result</h2>
+        <div class="result-class" id="resultClass">—</div>
+        <p id="resultExplanation"></p>
+        <div class="result-meta"><span>ALGORITHM</span><strong id="resultAlgorithm">Random Forest</strong></div>
+        <div class="result-disclaimer" id="resultDisclaimer"></div>
+        <div class="result-actions"><a href="/dashboard" class="button-quiet">View dashboard</a><button type="button" class="button-primary" id="newPrediction">New prediction ↗</button></div>
+    </section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#19030B">
+
+    <title>HEART / 01 — Beyond the Pulse</title>
+
+    <meta name="description"
+          content="Explore a new perspective on cardiac health insights with HEART / 01.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="ambient-glow"></div>
+    <div class="noise-overlay"></div>
+
+
+    <!-- ==========================================
+         NAVIGATION
+    =========================================== -->
+
+    <header class="navbar">
+
+        <a href="/" class="brand">
+
+            <div class="brand-mark">
+                H<span>/</span>01
+            </div>
+
+            <div class="brand-name">
+                <strong>HEART</strong>
+                <span>INTELLIGENCE PLATFORM</span>
+            </div>
+
+        </a>
+
+
+        <nav class="navigation" id="navigation">
+
+            <a href="#overview" class="nav-link active">
+                Overview
+            </a>
+
+            <a href="#intelligence" class="nav-link">
+                Intelligence
+            </a>
+
+            <a href="#research" class="nav-link">
+                Research
+            </a>
+
+            <a href="/dashboard" class="nav-link">
+                Workspace
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <div class="system-indicator">
+                <span class="status-light"></span>
+                SYSTEM ONLINE
+            </div>
+
+            <a href="/dashboard" class="nav-cta">
+                Explore platform
+                <span>↗</span>
+            </a>
+
+        </div>
+
+
+        <button class="mobile-menu"
+                id="mobileMenu"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
+    <main>
+
+
+        <!-- ======================================
+             HERO SECTION
+        ======================================= -->
+
+        <section class="hero" id="overview">
+
+
+            <!-- LEFT CONTENT -->
+
+            <div class="hero-content">
+
+
+                <div class="eyebrow reveal">
+
+                    <span class="eyebrow-line"></span>
+
+                    <span>
+                        RETHINKING CARDIAC INSIGHTS
+                    </span>
+
+                </div>
+
+
+                <h1 class="hero-title">
+
+                    A deeper<br>
+
+                    perspective on<br>
+
+                    <span>heart health.</span>
+
+                </h1>
+
+
+                <p class="hero-description reveal">
+
+                    Explore the intersection of health data,
+                    intelligent analysis and cardiac insights.
+
+                    A new way to understand the signals
+                    behind your heart.
+
+                </p>
+
+
+                <!-- BUTTONS -->
+
+                <div class="hero-buttons reveal">
+
+                    <a href="/dashboard" class="button-primary">
+
+                        <span>Explore the platform</span>
+
+                        <span class="button-icon">↗</span>
+
+                    </a>
+
+
+                    <a href="#intelligence" class="button-secondary">
+
+                        Discover more
+
+                        <span>↓</span>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- HERO METRICS -->
+
+                <div class="hero-meta reveal">
+
+
+                    <div class="meta-item">
+
+                        <span class="meta-number">01</span>
+
+                        <span>INTELLIGENCE</span>
+
+                    </div>
+
+
+                    <div class="meta-divider"></div>
+
+
+                    <div class="meta-item">
+
+                        <span class="meta-number">02</span>
+
+                        <span>ANALYTICS</span>
+
+                    </div>
+
+
+                    <div class="meta-divider"></div>
+
+
+                    <div class="meta-item">
+
+                        <span class="meta-number">03</span>
+
+                        <span>INSIGHTS</span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 RIGHT VISUAL
+            =================================== -->
+
+            <div class="hero-visual reveal">
+
+
+                <div class="visual-header">
+
+                    <div>
+
+                        <span class="visual-dot"></span>
+
+                        CARDIAC VISUALIZATION
+
+                    </div>
+
+                    <span>FIG. 001</span>
+
+                </div>
+
+
+
+                <!-- ANATOMICAL HEART AREA -->
+
+                <div class="anatomy-stage">
+
+
+                    <!-- ORBITAL CIRCLES -->
+
+                    <div class="orbit orbit-outer"></div>
+
+                    <div class="orbit orbit-middle"></div>
+
+                    <div class="orbit orbit-inner"></div>
+
+
+                    <!-- HEART GLOW -->
+
+                    <div class="anatomy-glow"></div>
+
+
+
+                    <!-- REALISTIC HEART IMAGE -->
+
+                    <img
+                        src="{{ url_for('static', filename='images/heart.png') }}"
+                        alt="Realistic anatomical human heart"
+                        class="anatomical-heart"
+                        draggable="false"
+                    >
+
+
+
+                    <!-- DATA POINTS -->
+
+                    <div class="data-point point-a">
+                        <span></span>
+                    </div>
+
+                    <div class="data-point point-b">
+                        <span></span>
+                    </div>
+
+                    <div class="data-point point-c">
+                        <span></span>
+                    </div>
+
+
+
+                    <!-- VISUAL LABELS -->
+
+                    <div class="visual-label label-a">
+
+                        <span>01</span>
+
+                        CARDIAC SYSTEM
+
+                    </div>
+
+
+                    <div class="visual-label label-b">
+
+                        <span>02</span>
+
+                        SIGNAL ANALYSIS
+
+                    </div>
+
+
+                    <div class="visual-label label-c">
+
+                        <span>03</span>
+
+                        HEALTH INSIGHTS
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     ECG SIGNAL CARD
+                =================================== -->
+
+                <div class="signal-card">
+
+
+                    <div class="signal-header">
+
+
+                        <div class="signal-title">
+
+                            <span class="signal-status"></span>
+
+                            <div>
+
+                                <strong>Cardiac signal</strong>
+
+                                <small>
+                                    Illustrative visualization
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="signal-index">
+                            H / 01
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- ECG GRAPH -->
+
+                    <svg class="signal-chart"
+                         viewBox="0 0 500 90"
+                         preserveAspectRatio="none"
+                         aria-label="Illustrative ECG waveform">
+
+                        <path
+                            d="
+                                M0 45
+                                H65
+                                L85 45
+                                L103 18
+                                L122 73
+                                L142 45
+                                H205
+                                L225 45
+                                L244 12
+                                L264 78
+                                L283 45
+                                H340
+                                L360 45
+                                L379 23
+                                L397 69
+                                L417 45
+                                H500
+                            "
+                        />
+
+                    </svg>
+
+
+
+                    <div class="signal-footer">
+
+                        <span>VISUAL SIGNAL PATTERN</span>
+
+                        <span>CONCEPTUAL</span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             METRICS STRIP
+        ======================================= -->
+
+        <section class="metrics-strip reveal">
+
+
+            <div class="metric-intro">
+
+                <span>THE FOUNDATION</span>
+
+                <p>
+                    Built around meaningful
+                    health information.
+                </p>
+
+            </div>
+
+
+
+            <div class="metric">
+
+                <span class="metric-number">01</span>
+
+                <span class="metric-label">
+                    DATA INTELLIGENCE
+                </span>
+
+            </div>
+
+
+
+            <div class="metric">
+
+                <span class="metric-number">02</span>
+
+                <span class="metric-label">
+                    PREDICTIVE ANALYSIS
+                </span>
+
+            </div>
+
+
+
+            <div class="metric">
+
+                <span class="metric-number">03</span>
+
+                <span class="metric-label">
+                    MODEL EVALUATION
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ======================================
+             PLATFORM INTRODUCTION
+        ======================================= -->
+
+        <section class="platform-section" id="platform">
+
+
+            <div class="section-top reveal">
+
+                <span class="section-eyebrow">
+                    THE PLATFORM / 001
+                </span>
+
+                <span class="section-number">
+                    DESIGNED FOR INSIGHT
+                </span>
+
+            </div>
+
+
+
+            <div class="section-content" id="intelligence">
+
+
+                <div class="section-heading reveal">
+
+                    <h2>
+
+                        Understand the data.
+
+                        <span>
+                            Explore the possibilities.
+                        </span>
+
+                    </h2>
+
+                </div>
+
+
+
+                <div class="section-description reveal">
+
+                    <p>
+
+                        A unified platform for exploring patient
+                        health information, generating experimental
+                        cardiac predictions and understanding
+                        model performance.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ==================================
+                 FEATURE CARDS
+            =================================== -->
+
+            <div class="feature-grid" id="research">
+
+
+                <!-- DATA CARD -->
+
+                <article class="feature-card reveal">
+
+
+                    <div class="feature-top">
+
+                        <span>01 / DATA</span>
+
+                        <span class="feature-symbol">↗</span>
+
+                    </div>
+
+
+
+                    <div class="feature-visual data-visual">
+
+
+                        <div class="data-bars">
+
+                            <span style="--height:35%"></span>
+
+                            <span style="--height:55%"></span>
+
+                            <span style="--height:42%"></span>
+
+                            <span style="--height:78%"></span>
+
+                            <span style="--height:65%"></span>
+
+                            <span style="--height:92%"></span>
+
+                            <span style="--height:58%"></span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <h3>Health data</h3>
+
+
+                    <p>
+
+                        Explore structured patient information
+                        and understand meaningful data patterns.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <!-- PREDICTION CARD -->
+
+                <article class="feature-card feature-highlight reveal">
+
+
+                    <div class="feature-top">
+
+                        <span>02 / PREDICTION</span>
+
+                        <span class="feature-symbol">↗</span>
+
+                    </div>
+
+
+
+                    <div class="feature-visual prediction-visual">
+
+
+                        <div class="prediction-orbit">
+
+
+                            <div class="prediction-core">
+
+                                H
+
+                            </div>
+
+
+                            <span class="prediction-dot"></span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <h3>Predictive intelligence</h3>
+
+
+                    <p>
+
+                        Generate experimental predictions
+                        using trained classification algorithms.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <!-- ANALYTICS CARD -->
+
+                <article class="feature-card reveal">
+
+
+                    <div class="feature-top">
+
+                        <span>03 / ANALYTICS</span>
+
+                        <span class="feature-symbol">↗</span>
+
+                    </div>
+
+
+
+                    <div class="feature-visual analytics-visual">
+
+
+                        <div class="analytics-line"></div>
+
+                        <div class="analytics-dot"></div>
+
+
+                    </div>
+
+
+
+                    <h3>Performance insights</h3>
+
+
+                    <p>
+
+                        Examine algorithm performance,
+                        evaluation metrics and analytical results.
+
+                    </p>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- ======================================
+             CONNECTED WORKSPACE
+        ======================================= -->
+        <section class="workspace-section" id="workspace">
+            <div class="workspace-top reveal">
+                <div>
+                    <span class="section-eyebrow">WORKSPACE / 002</span>
+                    <h2>Every phase.<br><span>One connected platform.</span></h2>
+                    <p>Move from the project overview to model predictions, saved records and evaluation insights through one workspace.</p>
+                </div>
+                <a href="/dashboard" class="workspace-main-link">Open workspace <span>↗</span></a>
+            </div>
+
+            <div class="workspace-grid">
+                <a class="workspace-card reveal" href="/dashboard">
+                    <div class="workspace-card-top"><span>01 / OVERVIEW</span><span class="workspace-icon">◫</span></div>
+                    <div class="workspace-card-art dashboard-art"><i></i><i></i><i></i><i></i><b></b></div>
+                    <h3>Platform dashboard</h3>
+                    <p>Review dataset information, activity, analytics and model evaluation in one place.</p>
+                    <span class="workspace-card-link">Explore dashboard <b>↗</b></span>
+                </a>
+
+                <a class="workspace-card workspace-card-featured reveal" href="/prediction">
+                    <div class="workspace-card-top"><span>02 / PREDICTION</span><span class="workspace-icon">♡</span></div>
+                    <div class="workspace-card-art prediction-art"><div class="prediction-art-core">H<span>/01</span></div><i></i><b></b></div>
+                    <h3>Heart prediction</h3>
+                    <p>Enter the 12 health and lifestyle features and run the saved Random Forest model.</p>
+                    <span class="workspace-card-link">Start prediction <b>↗</b></span>
+                </a>
+
+                <a class="workspace-card reveal" href="/history">
+                    <div class="workspace-card-top"><span>03 / RECORDS</span><span class="workspace-icon">↺</span></div>
+                    <div class="workspace-card-art history-art"><div></div><div></div><div></div><div></div></div>
+                    <h3>Prediction history</h3>
+                    <p>Search saved prediction events, inspect submitted inputs and manage stored records.</p>
+                    <span class="workspace-card-link">View history <b>↗</b></span>
+                </a>
+
+                <a class="workspace-card reveal" href="/dashboard#model-performance">
+                    <div class="workspace-card-top"><span>04 / INTELLIGENCE</span><span class="workspace-icon">⌘</span></div>
+                    <div class="workspace-card-art model-art"><span>RF</span><i></i><i></i><i></i></div>
+                    <h3>Model intelligence</h3>
+                    <p>Explore the model comparison results and evaluation metrics from the project.</p>
+                    <span class="workspace-card-link">View evaluation <b>↗</b></span>
+                </a>
+            </div>
+            <div class="workspace-disclaimer">HEART / 01 IS AN EXPERIMENTAL EDUCATIONAL PLATFORM — NOT A DIAGNOSTIC TOOL.</div>
+        </section>
+
+        <!-- ======================================
+             FOOTER
+        ======================================= -->
+
+        <footer class="footer">
+
+
+            <a href="/" class="footer-brand">
+
+                HEART <span>/ 01</span>
+
+            </a>
+
+
+            <p>
+                BEYOND THE PULSE.
+            </p>
+
+
+            <div class="footer-links">
+                <a href="/dashboard">Workspace</a>
+                <a href="/prediction">Prediction</a>
+                <a href="/history">History</a>
+            </div>
+
+            <span>
+                CARDIAC HEALTH INSIGHTS
+            </span>
+
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>

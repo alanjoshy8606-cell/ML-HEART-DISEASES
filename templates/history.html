@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#16070D">
+  <title>Prediction History — HEART / 01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+</head>
+<body>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="/"><span class="brand-mark">H<span>/</span>01</span><span class="brand-copy"><strong>HEART</strong><small>INTELLIGENCE PLATFORM</small></span></a>
+    <div class="side-label">WORKSPACE</div>
+    <nav class="side-nav">
+      <a class="side-link" href="/dashboard"><span class="side-icon">◫</span>Overview</a>
+      <a class="side-link" href="/prediction"><span class="side-icon">♡</span>Heart prediction</a>
+      <a class="side-link active" href="/history"><span class="side-icon">↺</span>Prediction history</a>
+      <a class="side-link" href="/dashboard"><span class="side-icon">▤</span>Dataset explorer</a>
+    </nav>
+    <div class="side-label side-label-spaced">INTELLIGENCE</div>
+    <nav class="side-nav">
+      <a class="side-link" href="/dashboard#model-performance"><span class="side-icon">⌘</span>Model performance</a>
+      <a class="side-link" href="/dashboard#analytics"><span class="side-icon">⌁</span>Analytics</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="system-card"><span class="online-dot"></span><div><strong>System operational</strong><small>Local SQLite history</small></div></div>
+      <a class="back-link" href="/">← Back to home</a>
+      <div class="sidebar-version">HEART / 01 <span>V 1.1</span></div>
+    </div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar">
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">☰</button>
+      <div class="breadcrumb"><a href="/dashboard">Workspace</a><b>/</b> Prediction history</div>
+      <div class="topbar-right"><div class="live-status"><span class="online-dot"></span> SYSTEM ONLINE</div><div class="profile"><div class="avatar">H</div><div><strong>HEART / 01</strong><small>Research workspace</small></div></div></div>
+    </header>
+    <section class="page-content">
+      <div class="page-heading">
+        <div><div class="eyebrow"><span></span> CARDIAC INTELLIGENCE / RECORDS</div><h1>Prediction history<span>.</span></h1><p>Review saved model requests and the input values associated with each record.</p></div>
+        <a class="button-primary" href="/prediction">New prediction <span>↗</span></a>
+      </div>
+      <section class="summary-grid">
+        <article class="summary-card"><small>ALL RECORDS</small><strong id="totalRecords">—</strong><span>Stored prediction events</span></article>
+        <article class="summary-card"><small>SUCCESSFUL</small><strong id="successfulRecords">—</strong><span>Completed model requests</span></article>
+        <article class="summary-card"><small>UNSUCCESSFUL</small><strong id="failedRecords">—</strong><span>Failed model requests</span></article>
+        <article class="summary-card"><small>UNKNOWN</small><strong id="unknownRecords">—</strong><span>Older or incomplete log entries</span></article>
+      </section>
+      <section class="panel">
+        <div class="filter-heading"><div><span class="section-kicker">RECORD MANAGEMENT</span><h2>Saved predictions</h2></div><span class="panel-chip">LOCAL DATABASE</span></div>
+        <div class="filters">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search ID, result, algorithm, gender..."></label>
+          <select id="statusFilter"><option value="">All statuses</option><option value="success">Successful</option><option value="failed">Failed</option></select>
+          <select id="predictionFilter"><option value="">All results</option><option value="yes">Yes</option><option value="no">No</option></select>
+          <input id="fromDate" type="date" aria-label="From date">
+          <input id="toDate" type="date" aria-label="To date">
+          <button class="button-quiet" id="clearFilters">Clear</button>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>RECORD</th><th>DATE &amp; TIME</th><th>MODEL OUTPUT</th><th>ALGORITHM</th><th>STATUS</th><th>ACTION</th></tr></thead>
+            <tbody id="historyTable"><tr><td colspan="6" class="empty-cell">Loading prediction records...</td></tr></tbody>
+          </table>
+        </div>
+        <div class="table-bottom"><span id="resultCount">Loading...</span><div class="pagination"><button id="previousPage" disabled>← Previous</button><span id="pageLabel">Page 1</span><button id="nextPage" disabled>Next →</button></div></div>
+      </section>
+      <footer class="page-footer"><span>HEART / 01 — BEYOND THE PULSE</span><span>EXPERIMENTAL HEALTH-INSIGHT PLATFORM • NOT A DIAGNOSTIC TOOL</span></footer>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal-backdrop" id="detailModal" aria-hidden="true">
+  <section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+    <span class="section-kicker">RECORD DETAILS</span><h2 id="detailTitle">Prediction record</h2>
+    <div id="detailContent"></div>
+    <div class="modal-actions"><button class="button-danger" id="deleteRecord">Delete record</button><button class="button-quiet" id="closeModalBottom">Close</button></div>
+  </section>
+</div>
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+</body>
+</html>

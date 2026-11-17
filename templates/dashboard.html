@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#16070D">
+
+    <title>Overview — HEART / 01</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="ambient ambient-one"></div>
+
+<div class="ambient ambient-two"></div>
+
+
+
+<div class="app-shell">
+
+    <aside class="sidebar" id="sidebar">
+
+        <a class="brand" href="/">
+
+            <span class="brand-mark">H<span>/</span>01</span>
+
+            <span class="brand-copy"><strong>HEART</strong><small>INTELLIGENCE PLATFORM</small></span>
+
+        </a>
+
+
+
+        <div class="side-label">WORKSPACE</div>
+
+        <nav class="side-nav">
+
+            <a class="side-link active" href="/dashboard"><span class="side-icon">◫</span>Overview</a>
+
+            <a class="side-link" href="/prediction"><span class="side-icon">♡</span>Heart prediction</a>
+
+            <a class="side-link" href="/history"><span class="side-icon">↺</span>Prediction history</a>
+
+            <a class="side-link" href="#" data-coming-soon><span class="side-icon">▤</span>Dataset explorer</a>
+
+        </nav>
+
+
+
+        <div class="side-label side-label-spaced">INTELLIGENCE</div>
+
+        <nav class="side-nav">
+
+            <a class="side-link" href="#model-performance"><span class="side-icon">⌘</span>Model performance</a>
+
+            <a class="side-link" href="#analytics"><span class="side-icon">⌁</span>Analytics</a>
+
+            <a class="side-link" href="#" data-coming-soon><span class="side-icon">⚙</span>Settings</a>
+
+        </nav>
+
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-card">
+
+                <span class="online-dot"></span>
+
+                <div><strong>System operational</strong><small id="dataset-connection">Checking dataset…</small></div>
+
+            </div>
+
+            <a class="back-link" href="/">← Back to home</a>
+
+            <div class="sidebar-version">HEART / 01 <span>V 1.0</span></div>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-area">
+
+        <header class="topbar">
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">☰</button>
+
+            <div class="breadcrumb"><span>Workspace</span><b>/</b> Overview</div>
+
+            <div class="topbar-right">
+
+                <div class="live-status"><span class="online-dot"></span> SYSTEM ONLINE</div>
+
+                <button class="icon-button" aria-label="Notifications" title="Notifications">♧<i></i></button>
+
+                <div class="profile">
+
+                    <div class="avatar">H</div>
+
+                    <div><strong>HEART / 01</strong><small>Research workspace</small></div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="page-content">
+
+            <div class="page-heading">
+
+                <div>
+
+                    <div class="eyebrow"><span></span> CARDIAC INTELLIGENCE / OVERVIEW</div>
+
+                    <h1>Good to see you<span>.</span></h1>
+
+                    <p>Your heart-health analysis workspace at a glance.</p>
+
+                </div>
+
+                <div class="heading-date"><span class="date-label">WORKSPACE STATUS</span><strong><i class="online-dot"></i> Live overview</strong></div>
+
+            </div>
+
+
+
+            <div class="section-heading">
+
+                <div><span class="section-kicker">01 / OVERVIEW</span><h2>Platform metrics</h2></div>
+
+                <span class="subtle-note">Live data from your local project</span>
+
+            </div>
+
+
+
+            <div class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div class="stat-top"><span class="stat-icon">▤</span><span class="stat-tag">DATASET</span></div>
+
+                    <div class="stat-value" id="totalRecords">—</div>
+
+                    <div class="stat-name">Total records</div>
+
+                    <div class="stat-foot"><span class="tiny-dot"></span> Records loaded from data.csv</div>
+
+                </article>
+
+                <article class="stat-card">
+
+                    <div class="stat-top"><span class="stat-icon">✓</span><span class="stat-tag">PREDICTIONS</span></div>
+
+                    <div class="stat-value" id="successfulPredictions">0</div>
+
+                    <div class="stat-name">Successful requests</div>
+
+                    <div class="stat-foot">Completed prediction requests</div>
+
+                </article>
+
+                <article class="stat-card">
+
+                    <div class="stat-top"><span class="stat-icon">!</span><span class="stat-tag">PREDICTIONS</span></div>
+
+                    <div class="stat-value" id="failedPredictions">0</div>
+
+                    <div class="stat-name">Unsuccessful requests</div>
+
+                    <div class="stat-foot">Failed or interrupted requests</div>
+
+                </article>
+
+                <article class="stat-card stat-card-featured">
+
+                    <div class="stat-top"><span class="stat-icon">⌘</span><span class="stat-tag">SELECTED MODEL</span></div>
+
+                    <div class="stat-model" id="selectedModel">Random Forest</div>
+
+                    <div class="stat-name">Active algorithm</div>
+
+                    <div class="stat-foot"><span class="tiny-dot"></span> Selected by cross-validated F1</div>
+
+                </article>
+
+            </div>
+
+
+
+            <div class="content-grid" id="analytics">
+
+                <section class="panel activity-panel">
+
+                    <div class="panel-heading">
+
+                        <div><span class="section-kicker">02 / ACTIVITY</span><h3>Prediction activity</h3></div>
+
+                        <span class="panel-chip">LAST 7 LOGGED DAYS</span>
+
+                    </div>
+
+                    <div class="chart-wrap"><canvas id="activityChart"></canvas><div class="empty-chart" id="activityEmpty">Prediction activity will appear here<br><small>once the prediction module is connected.</small></div></div>
+
+                </section>
+
+
+
+                <section class="panel distribution-panel">
+
+                    <div class="panel-heading">
+
+                        <div><span class="section-kicker">03 / DATASET</span><h3>Target distribution</h3></div>
+
+                        <span class="panel-chip">DISEASE LABEL</span>
+
+                    </div>
+
+                    <div class="distribution-body">
+
+                        <div class="donut-wrap"><canvas id="distributionChart"></canvas><div class="donut-center"><strong id="distributionTotal">—</strong><small>RECORDS</small></div></div>
+
+                        <div class="legend">
+
+                            <div><span class="legend-dot rose"></span><span>Yes</span><strong id="positiveCases">—</strong></div>
+
+                            <div><span class="legend-dot muted"></span><span>No</span><strong id="negativeCases">—</strong></div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="panel-footnote">Counts are read from the dataset's <code>disease</code> column.</p>
+
+                </section>
+
+            </div>
+
+
+
+            <section class="panel model-panel" id="model-performance">
+
+                <div class="panel-heading">
+
+                    <div><span class="section-kicker">04 / MODEL INTELLIGENCE</span><h3>Algorithm performance</h3><p class="panel-description">Cross-validation results from the model comparison workflow.</p></div>
+
+                    <span class="selected-badge"><span class="tiny-dot"></span> BEST MODEL: <b id="bestModelBadge">RANDOM FOREST</b></span>
+
+                </div>
+
+                <div class="table-scroll">
+
+                    <table>
+
+                        <thead><tr><th>ALGORITHM</th><th>ACCURACY</th><th>PRECISION</th><th>RECALL</th><th>F1 SCORE</th><th>ROC-AUC</th><th>STATUS</th></tr></thead>
+
+                        <tbody id="modelTable">
+
+                            <tr><td colspan="7" class="table-empty">Run ml/model_comparison.py to publish evaluation metrics here.</td></tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="model-note"><span>ⓘ</span> Metrics describe evaluation on your dataset; they are not a guarantee of real-world clinical performance.</div>
+
+            </section>
+
+
+
+            <div class="bottom-grid">
+
+                <section class="panel dataset-panel">
+
+                    <div class="panel-heading"><div><span class="section-kicker">05 / DATA QUALITY</span><h3>Dataset health</h3></div><span class="health-badge" id="datasetHealth">CHECKING</span></div>
+
+                    <div class="quality-list">
+
+                        <div><span>Input features</span><strong id="featureCount">—</strong></div>
+
+                        <div><span>Missing values</span><strong id="missingValues">—</strong></div>
+
+                        <div><span>Duplicate records</span><strong id="duplicateRecords">—</strong></div>
+
+                        <div><span>Dataset connection</span><strong id="datasetStatus">Checking…</strong></div>
+
+                    </div>
+
+                </section>
+
+
+
+                <section class="panel recent-panel">
+
+                    <div class="panel-heading"><div><span class="section-kicker">06 / ACTIVITY LOG</span><h3>Recent predictions</h3></div><span class="panel-chip">LATEST 6</span></div>
+
+                    <div id="recentList" class="recent-list"><div class="recent-empty">No prediction activity recorded yet.</div></div>
+
+                </section>
+
+            </div>
+
+
+
+            <footer class="dashboard-footer"><span>HEART / 01 — BEYOND THE PULSE</span><span>EXPERIMENTAL HEALTH-INSIGHT PLATFORM <b>•</b> NOT A DIAGNOSTIC TOOL</span></footer>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+
+</html>
